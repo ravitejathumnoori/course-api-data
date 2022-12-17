@@ -1,10 +1,13 @@
 package com.course.springbootstarter.course;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.course.springbootstarter.topic.Topic;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 
@@ -15,7 +18,9 @@ public class Course {
 	private String id;
 	private String name;
 	private String description;
+	@JsonBackReference
 	@ManyToOne
+	@JoinColumn(name = "parent_id") //parent_id is the foreign key for child
 	private Topic topic;
 	
 	public Topic getTopic() {
