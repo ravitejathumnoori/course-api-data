@@ -1,6 +1,7 @@
 package com.course.springbootstarter.topic;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 public class TopicController {
@@ -21,7 +23,7 @@ public class TopicController {
 	}
 	
 	@RequestMapping("/topics/{id}")
-	public Topic getTopic(@PathVariable String id) {
+	public Optional<Topic> getTopic(@PathVariable String id) {
 		return topicService.getTopic(id);
 	}
 	
@@ -37,7 +39,8 @@ public class TopicController {
 	
 	@RequestMapping(method = RequestMethod.DELETE,value = "/topics/{id}")
 	public void deleteTopic(@PathVariable String id) {
-		topicService.deleteTopic(id);
+		Optional<Topic> topic = getTopic(id);
+		topicService.deleteTopic(topic);
 	}
 
 }

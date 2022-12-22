@@ -1,6 +1,7 @@
 package com.course.springbootstarter.course;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,7 @@ public class CourseController {
 	}
 	
 	@RequestMapping("/topics/{topicId}/courses/{id}")
-	public Course getCourse(@PathVariable String id) {
+	public Optional<Course> getCourse(@PathVariable String id) {
 		return courseService.getCourse(id);
 	}
 	
@@ -41,7 +42,8 @@ public class CourseController {
 	
 	@RequestMapping(method = RequestMethod.DELETE,value = "/topics/{topicId}/courses/{id}")
 	public void deleteTopic(@PathVariable String id) {
-		courseService.deleteCourse(id);
+		Optional<Course> course = getCourse(id);
+		courseService.deleteCourse(course);
 	}
 
 }
