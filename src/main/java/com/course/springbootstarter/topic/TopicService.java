@@ -35,7 +35,7 @@ public class TopicService {
 
 	public void deleteTopic(Optional<Topic> id) {
 		id.orElseThrow(() -> new RuntimeException("Not found: " + id));
-		topicRepository.delete(id.get());;
+		topicRepository.delete(id.get());
 	}
 
 	

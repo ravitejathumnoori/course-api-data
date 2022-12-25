@@ -3,9 +3,10 @@ package com.course.springbootstarter.course;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.course.springbootstarter.exception.CourseNotFoundException;
 
 @Service
 public class CourseService {
@@ -33,8 +34,8 @@ public class CourseService {
 		courseRepository.save(course);
 	}
 
-	public void deleteCourse(Optional<Course> id) {
-		id.orElseThrow(() -> new RuntimeException("Not found: " + id));
+	public void deleteCourse(Optional<Course> id,String error) {
+		id.orElseThrow(() -> new CourseNotFoundException("Not found: " + error));
 		courseRepository.delete(id.get());
 	}
 
