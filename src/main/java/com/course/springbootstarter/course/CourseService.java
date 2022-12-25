@@ -10,7 +10,7 @@ import com.course.springbootstarter.exception.CourseNotFoundException;
 
 @Service
 public class CourseService {
-
+	
 	@Autowired
 	private CourseRepository courseRepository;
 	 
@@ -35,6 +35,7 @@ public class CourseService {
 	}
 
 	public void deleteCourse(Optional<Course> id,String error) {
+		System.out.println("From course service");
 		id.orElseThrow(() -> new CourseNotFoundException("Not found: " + error));
 		courseRepository.delete(id.get());
 	}
