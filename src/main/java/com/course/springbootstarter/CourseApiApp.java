@@ -8,7 +8,6 @@ public class CourseApiApp {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Main method started");
 		SpringApplication.run(CourseApiApp.class, args);
 	}
 

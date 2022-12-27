@@ -14,19 +14,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 	
-	
-	
-	public ControllerAdvisor() {
-		super();
-		System.out.println("From Advicer method");
-	}
 
 	@ExceptionHandler(value = {CourseNotFoundException.class})
 	public ResponseEntity<Object> handleCourseNotFoundException(CourseNotFoundException ex, WebRequest request)
 	{
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
-		body.put("message", "Course not found");
+		body.put("message", ex.getMessage());
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
 
