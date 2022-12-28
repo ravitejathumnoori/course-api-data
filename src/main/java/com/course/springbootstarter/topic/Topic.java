@@ -2,12 +2,15 @@ package com.course.springbootstarter.topic;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Topic {
 	
 	@Id
+	@Pattern(regexp="^[a-z]*$",message = "Invalid Input")
 	private String id;
+	@Pattern(regexp="^[a-z]*$",message = "Invalid Input")
 	private String name;
 	private String description;
 	
