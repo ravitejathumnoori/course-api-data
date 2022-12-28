@@ -3,6 +3,8 @@ package com.course.springbootstarter.topic;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,12 +30,12 @@ public class TopicController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/topics")
-	public void addTopic(@RequestBody Topic topic) {
+	public void addTopic(@RequestBody @Valid Topic topic) {
 		topicService.addTopic(topic);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
-	public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
+	public void updateTopic(@RequestBody @Valid Topic topic, @PathVariable String id) {
 		topicService.updateTopic(id, topic);
 	}
 	
