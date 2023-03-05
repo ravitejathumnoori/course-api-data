@@ -8,9 +8,9 @@ import javax.validation.constraints.Pattern;
 public class Topic {
 	
 	@Id
-	@Pattern(regexp="^[a-z]*$",message = "Invalid Input")
+	@Pattern(regexp="^[a-z]*$",message = "Invalid Input")//shouldn't start with small
 	private String id;
-	@Pattern(regexp="^[a-z]*$",message = "Invalid Input")
+	@Pattern(regexp="^[a-z]*$",message = "Invalid Input")//shouldn't start with small
 	private String name;
 	private String description;
 	
