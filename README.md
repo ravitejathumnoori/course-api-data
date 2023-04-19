@@ -2,4 +2,9 @@
 
 This is a basic API developed to save course and topic deta
 
-This project is developed using Spring Boot, Hibernaties and used embeded DB derby.
+Below are the database queries in MYSQL:
+
+mysql> SHOW DATABASES
+mysql> use courseapi;
+mysql> SHOW TABLES;
+mysql> select * from course;

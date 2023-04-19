@@ -13,7 +13,7 @@ import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 public class SpringSecurityConfiguration {
 	
 
