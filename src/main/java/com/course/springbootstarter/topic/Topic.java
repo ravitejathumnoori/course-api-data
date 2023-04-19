@@ -1,8 +1,18 @@
 package com.course.springbootstarter.topic;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
+import org.springframework.data.repository.cdi.Eager;
+
+import com.course.springbootstarter.course.Course;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Topic {
@@ -13,6 +23,10 @@ public class Topic {
 	@Pattern(regexp="^[a-z]*$",message = "Invalid Input")//shouldn't start with small
 	private String name;
 	private String description;
+	@JoinColumn(name = "parent_id")
+	@OneToMany
+	@JsonManagedReference
+	private List<Course> courses;
 	
 	public Topic() {
 	}

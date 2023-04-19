@@ -5,10 +5,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
+
 import com.course.springbootstarter.topic.Topic;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-
 
 @Entity
 public class Course {
@@ -18,6 +18,7 @@ public class Course {
 	private String name;
 	private String description;
 	@JsonBackReference
+	@Lazy
 	@ManyToOne
 	@JoinColumn(name = "parent_id") //parent_id is the foreign key for child
 	private Topic topic;
