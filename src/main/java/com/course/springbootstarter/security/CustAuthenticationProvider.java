@@ -2,6 +2,7 @@ package com.course.springbootstarter.security;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,8 +14,9 @@ import org.springframework.stereotype.Component;
 
 
 
+
 @Component
-public class CustAuthenticationProvider implements org.springframework.security.authentication.AuthenticationProvider {
+public class CustAuthenticationProvider implements AuthenticationProvider {
 	
 	@Resource
 	UserDetailsService userDetailsService;
